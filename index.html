@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test web worker</title>
+    <script>
+        const worker = new Worker("web_worker.js");
+
+        worker.addEventListener("message", ( data ) => {
+            console.log({ message_for_web_worker : event.data });
+        })
+
+        function buttonClick()
+        {
+            console.log("start Log");
+            worker.postMessage(200000);
+            console.log("finish  loop");
+        }
+
+
+    </script>
+</head>
+<body>
+    <button onclick="buttonClick()">Click looper</button>
+</body>
+</html>
